@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chatbot Root</h1>
+    <div>
+        <form action="" method="post" name="chatroom" onsubmit="redirect_room(event)">
+            <input type="text" name="roomid" placeholder="Enter room id"></br>
+            <input type="button" id="submit" value="Enter Room" onclick="redirect_room(event)">
+        </form>
+    </div>
+</body>
+<script>
+function redirect_room(e) {
+    e.preventDefault();
+    console.log(e)
+    const roomid = new FormData(document.chatroom).get('roomid');
+    if (roomid == '') {
+        alert('Please enter a room id');
+        return;
+    }
+    window.location.href = '/chat/' + roomid + '/';
+}
+</script>
+</html>
